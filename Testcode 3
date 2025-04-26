@@ -1,1 +1,25 @@
-
+#Question no.3
+def is_disarium(num):
+    """Check if a number is a Disarium number."""
+    digits = list(map(int, str(num)))
+    total = sum(digit ** (i + 1) for i, digit in enumerate(digits))
+    return total == num
+def first_n_disarium(n):
+    """Return the first n Disarium numbers."""
+    result = []
+    i = 0
+    while len(result) < n:
+        if is_disarium(i):
+            result.append(i)
+        i += 1
+    return result
+def disarium_in_range(start, end):
+    """Return all Disarium numbers in a given range [start, end]."""
+    return [i for i in range(start, end + 1) if is_disarium(i)]
+n = 10
+print(f"First {n} Disarium numbers:")
+print(first_n_disarium(n))
+start = 1
+end = 200
+print(f"\nDisarium numbers between {start} and {end}:")
+print(disarium_in_range(start, end))
